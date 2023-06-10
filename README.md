@@ -9,7 +9,7 @@ The provided code follows a simple approach using two ArrayLists. It first trave
 #### Time Complexity:<br>
 <B>O(n)</B> since we traverse the<B>n</B>sized array twice in the code.<br>
 #### Space Complexity:<br>
-<B>O(n)</B> since we only store a total of <B>n</B>numbers in the <B>p</B> and <B>ne</B> arrays.
+<B>O(n)</B> since we only store a total of <B>n</B>numbers in the <B>p</B> and <B>ne</B> ArrayLists.
 
 ## Code (JAVA)<br>
 
