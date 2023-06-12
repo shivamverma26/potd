@@ -8,7 +8,6 @@ class Solution {
             int j = updates[i];
             for (int idx = j - 1; idx < n; idx++) {
                 a[idx]++; }
-   
-                   }
+                      }
    }
 }
