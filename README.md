@@ -1,50 +1,50 @@
 
 
 <body>
-  <h1>Cut Rod Problem - Dynamic Programming Solution</h1>
+  <h1>kLargest Elements Finder</h1>
 
-  <p>This code implements a dynamic programming solution to the cut rod problem. The cut rod problem is a classic optimization problem in computer science, where the goal is to determine the maximum obtainable value by cutting a rod into smaller pieces and selling them at different prices.</p>
+  <p>This file contains a Java program that finds the k largest elements from an input array,Given an array of integers arr, the program aims to find the k largest elements from the array.</p>
 
  
 
   <h2>Approach</h2>
 
-  <p>The code uses a dynamic programming approach to solve the cut rod problem. It utilizes an ArrayList <code>li</code> to store the maximum obtainable value for each rod length from 1 to <code>n</code>.</p>
+  <p>The program follows a simple approach to solve the problem:</p>
 
-  <p>The algorithm iterates over each rod length from 1 to <code>n</code> and calculates the maximum obtainable value for that length by considering all possible cuts. It uses a nested loop to iterate over all possible cuts and determines the maximum value by taking the maximum of the current maximum value and the sum of the price of the current cut and the maximum obtainable value for the remaining length.</p>
-
-  <p>Finally, the code returns the maximum obtainable value for the given rod length <code>n</code>.</p>
-
+  
+<ol>
+        <li>Sort the input array in ascending order using the <code>Arrays.sort()</code> method.</li>
+        <li>Declare a new array <code>a</code> of size <code>k</code> to store the <code>k</code> largest elements.</li>
+        <li>Initialize an index variable <code>i</code> to 0.</li>
+        <li>Iterate through the sorted array in reverse order.</li>
+        <li>In each iteration, assign the current element from the sorted array to the <code>i</code>th index of the <code>a</code> array and increment <code>i</code> by 1.</li>
+        <li>Return the <code>a</code> array, which now contains the <code>k</code> largest elements from the input array.</li>
+    
+  </ol>
+ 
  
 
   <pre><code>//Driver code
-   class Solution{
-     public int cutRod(int price[], int n) {
-       ArrayList<Integer> li = new ArrayList<>();
-        li.add(0);
-        
-        for (int i = 1; i <= n; i++) {
-            int max = Integer.MIN_VALUE;
-            for (int j = 0; j < i; j++) {
-                max = Math.max(max, (price[j] + li.get(i - j - 1)));
-            }
-            li.add(max);
-        }
-      
-        return li.get(n);
+  class Solution {
+    int[] kLargest(int[] arr, int n, int k) {
+        // code here
+        Arrays.sort(arr);
+        int a[] =new int [k];
+        int i=0;
+       while(k-->0){
+      a[i]=arr[arr.length-1-i];
+          i++;
+       }
+      return a;  
     }
 }
   </code></pre>
 
   <h2>Complexity Analysis</h2>
 
-  <p>The time complexity of this solution is <code>O(n^2)</code>, where <code>n</code> is the length of the rod.<br> The space complexity is <code>O(n)</code> as the <code>li</code> ArrayList is used to store the maximum obtainable values for each rod length.</p>
+  <p>The time complexity of this solution is <code>O(n log n + k)</code>, where <code>n</code> is the total number of postive integer.<br> The space complexity is <code>O(k)</code> as for space complexity, the code utilizes additional space to store the 'a' array of size 'k'. 
 
-  <h2>References</h2>
-  <ul>
-    <li><a href="https://www.geeksforgeeks.org/cutting-a-rod-dp-13/">Cutting a Rod | DP-13</a></li>
-    <li><a href="https://en.wikipedia.org/wiki/Cutting_stock_problem#Rod_cutting_problem">Rod cutting problem</a></li>
-  </ul>
+ 
 
 </body>
 
