@@ -1,4 +1,4 @@
-//Driver Code
+//Driver Code 
 class Solution {
 
     public static void update(int a[], int n, int updates[], int k)
