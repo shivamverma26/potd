@@ -1,51 +1,46 @@
+# Max Diamonds
 
+This is a solution for the "Max Diamonds" problem implemented in Java.
 
-<body>
-  <h1>kLargest Elements Finder</h1>
+## Problem Description
 
-  <p>This file contains a Java program that finds the k largest elements from an input array,Given an array of integers arr, the program aims to find the k largest elements from the array.</p>
+You are given an array `A` of length `N` representing the number of diamonds in different piles. You need to find the maximum number of diamonds you can collect by performing the following operation `K` times:
+- Choose a pile with the maximum number of diamonds.
+- Collect all the diamonds from that pile.
+- Divide the number of diamonds in the chosen pile by 2 and put them back into the pile.
 
- 
+## Approach
 
-  <h2>Approach</h2>
+The solution approach involves using a priority queue to keep track of the piles with the maximum number of diamonds. The steps are as follows:
 
-  <p>The program follows a simple approach to solve the problem:</p>
+1. Create a priority queue, `p`, with reverse ordering to store the diamond piles.
+2. Add all the elements of array `A` to the priority queue.
+3. Initialize a variable `sum` to 0 to store the sum of collected diamonds.
+4. Iterate `K` times:
+   - Remove the pile with the maximum number of diamonds from the priority queue and store it in `temp`.
+   - Add `temp` to `sum`.
+   - Divide `temp` by 2 and add the result back to the priority queue.
 
-  
-<ol>
-        <li>Sort the input array in ascending order using the <code>Arrays.sort()</code> method.</li>
-        <li>Declare a new array <code>a</code> of size <code>k</code> to store the <code>k</code> largest elements.</li>
-        <li>Initialize an index variable <code>i</code> to 0.</li>
-        <li>Iterate through the sorted array in reverse order.</li>
-        <li>In each iteration, assign the current element from the sorted array to the <code>i</code>th index of the <code>a</code> array and increment <code>i</code> by 1.</li>
-        <li>Return the <code>a</code> array, which now contains the <code>k</code> largest elements from the input array.</li>
-    
-  </ol>
- 
- 
+5. Return the value of `sum`, which represents the maximum number of diamonds collected.
 
-  <pre><code>//Driver code
-  class Solution {
-    int[] kLargest(int[] arr, int n, int k) {
-        // code here
-        Arrays.sort(arr);
-        int a[] =new int [k];
-        int i=0;
-       while(k-->0){
-      a[i]=arr[arr.length-1-i];
-          i++;
-       }
-      return a;  
+## Code
+
+```java
+class Solution {
+    static long maxDiamonds(int[] A, int N, int K) {
+        PriorityQueue<Integer> p = new PriorityQueue<>(Collections.reverseOrder());
+        for (int x : A)
+            p.add(x);
+        long sum = 0;
+        for (int i = 0; i < K; i++) {
+            int temp = p.remove();
+            sum += temp;
+            p.add(temp / 2);
+        }
+        return sum;
     }
 }
-  </code></pre>
+```
+## Complexity Analysis
 
-  <h2>Complexity Analysis</h2>
-
-  <p>The time complexity of this solution is <code>O(n log n + k)</code>, where <code>n</code> is the total number of postive integer.<br> The space complexity is <code>O(k)</code> as for space complexity, the code utilizes additional space to store the 'a' array of size 'k'. 
-
- 
-
-</body>
-
-</html>
+The time complexity of the solution is O(K log N), where N is the length of the input array.<br>The space complexity is O(N) to store the priority queue.
