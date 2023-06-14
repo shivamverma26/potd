@@ -1,4 +1,4 @@
-# Max Diamonds
+# Max Diamonds 
 
 This is a solution for the "Max Diamonds" problem implemented in Java.
 
