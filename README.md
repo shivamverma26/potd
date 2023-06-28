@@ -1,46 +1,33 @@
-# Max Diamonds 
+<h1>Binary Tree Maximum Depth</h1>
 
-This is a solution for the "Max Diamonds" problem implemented in Java.
+<p>This repository contains a Java implementation of calculating the maximum depth of a binary tree.</p>
 
-## Problem Description
+<h2>Description</h2>
 
-You are given an array `A` of length `N` representing the number of diamonds in different piles. You need to find the maximum number of diamonds you can collect by performing the following operation `K` times:
-- Choose a pile with the maximum number of diamonds.
-- Collect all the diamonds from that pile.
-- Divide the number of diamonds in the chosen pile by 2 and put them back into the pile.
+<p>The <code>BinaryTree</code> class provides a method <code>maxDepth</code> that calculates the maximum depth of a binary tree using a recursive approach. The maximum depth of a binary tree is defined as the length of the longest path from the root node to any leaf node.</p>
 
-## Approach
+<h3>Code</h3>
 
-The solution approach involves using a priority queue to keep track of the piles with the maximum number of diamonds. The steps are as follows:
+<p>Here's the Java code for the <code>maxDepth</code> method:</p>
 
-1. Create a priority queue, `p`, with reverse ordering to store the diamond piles.
-2. Add all the elements of array `A` to the priority queue.
-3. Initialize a variable `sum` to 0 to store the sum of collected diamonds.
-4. Iterate `K` times:
-   - Remove the pile with the maximum number of diamonds from the priority queue and store it in `temp`.
-   - Add `temp` to `sum`.
-   - Divide `temp` by 2 and add the result back to the priority queue.
-
-5. Return the value of `sum`, which represents the maximum number of diamonds collected.
-
-## Code
-
-```java
+<pre>
+<code>
 class Solution {
-    static long maxDiamonds(int[] A, int N, int K) {
-        PriorityQueue<Integer> p = new PriorityQueue<>(Collections.reverseOrder());
-        for (int x : A)
-            p.add(x);
-        long sum = 0;
-        for (int i = 0; i < K; i++) {
-            int temp = p.remove();
-            sum += temp;
-            p.add(temp / 2);
-        }
-        return sum;
-    }
-}
-```
-## Complexity Analysis
+  public static int maxDepth(Node root) {
+    // code here
+     if (root == null)
+            return 0;
 
-The time complexity of the solution is O(K log N), where N is the length of the input array.<br>The space complexity is O(N) to store the priority queue.
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right)); 
+  }
+}
+</code>
+</pre>
+
+<h3>Time Complexity</h3>
+
+<p>The time complexity of calculating the maximum depth of a binary tree is <code>O(n)</code>, where <code>n</code> is the number of nodes in the tree. This is because the method visits each node in the tree exactly once.</p>
+
+<h3>Space Complexity</h3>
+
+<p>The space complexity of the <code>maxDepth</code> method is <code>O(h)</code>, where <code>h</code> is the height of the binary tree. In the worst case, when the tree is skewed, the height can be equal to the number of nodes in the tree, resulting in a space complexity of <code>O(n)</code>. However, in a balanced binary tree, the height is <code>log(n)</code>, resulting in a space complexity of <code>O(log(n))</code>.</p>
