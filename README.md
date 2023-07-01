@@ -1,33 +1,52 @@
-<h1>Binary Tree Maximum Depth</h1>
+<!-- Implementation Details -->
+  <h2>Implementation Details</h2>
+    <p>This repository contains a Java solution for counting the number of set bits in a given integer.</p>
+   <h2>Approach</h2>
 
-<p>This repository contains a Java implementation of calculating the maximum depth of a binary tree.</p>
+<p>The approach to count the number of set bits in a given integer is as follows:</p>
 
-<h2>Description</h2>
+<ol>
+    <li>Initialize a variable <code>res</code> to 0. This variable will store the count of set bits.</li>
+    <li>Iterate while <code>N</code> is greater than 0:</li>
+    <ul>
+        <li>Check if the least significant bit of <code>N</code> is set (i.e., not equal to 0) by performing the modulo operation with 2 (i.e., <code>N % 2 != 0</code>).</li>
+        <li>If the least significant bit is set, increment <code>res</code> by 1.</li>
+        <li>Right-shift <code>N</code> by 1 bit to discard the least significant bit (equivalent to <code>N = N / 2</code>).</li>
+    </ul>
+    <li>Return the value of <code>res</code> as the result, which represents the count of set bits in the binary representation of the given integer.</li>
+</ol>
+  <!-- Code -->
+    <h3>Code</h3>
+    <pre><code>
+     class Solution {
+    static int setBits(int N) {
+        // code here
+          int res=0;
+        while(N>0){
+            if(N%2!=0){
+                res++;
+            }
+            N=N/2;
+        }
+        return res;
+    }
+     }
+         </code></pre>
+     <!-- Time Complexity -->
+    <h3>Time Complexity</h3>
+    <p>The time complexity of the <code>setBits</code> method is O(log N), where N represents the value of the input integer.</p>
+   <!-- Space Complexity -->
+    <h3>Space Complexity</h3>
+    <p>The space complexity of the solution is O(1), as it only requires a single variable to store the count of set bits.</p>
+     <!-- Usage -->
+    <h2>Usage</h2>
+    <p>To use the <code>setBits</code> method in your code:</p>
+    <ol>
+        <li>Copy the <code>Solution</code> class into your Java project.</li>
+        <li>Call the <code>setBits</code> method with an integer <code>N</code> as an argument.</li>
+        <li>Capture the returned value, which represents the count of set bits in the binary representation of <code>N</code>.</li>
+        <li>Utilize the count as required in your program.</li>
+    </ol>
+  
+  
 
-<p>The <code>BinaryTree</code> class provides a method <code>maxDepth</code> that calculates the maximum depth of a binary tree using a recursive approach. The maximum depth of a binary tree is defined as the length of the longest path from the root node to any leaf node.</p>
-
-<h3>Code</h3>
-
-<p>Here's the Java code for the <code>maxDepth</code> method:</p>
-
-<pre>
-<code>
-class Solution {
-  public static int maxDepth(Node root) {
-    // code here
-     if (root == null)
-            return 0;
-
-        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right)); 
-  }
-}
-</code>
-</pre>
-
-<h3>Time Complexity</h3>
-
-<p>The time complexity of calculating the maximum depth of a binary tree is <code>O(n)</code>, where <code>n</code> is the number of nodes in the tree. This is because the method visits each node in the tree exactly once.</p>
-
-<h3>Space Complexity</h3>
-
-<p>The space complexity of the <code>maxDepth</code> method is <code>O(h)</code>, where <code>h</code> is the height of the binary tree. In the worst case, when the tree is skewed, the height can be equal to the number of nodes in the tree, resulting in a space complexity of <code>O(n)</code>. However, in a balanced binary tree, the height is <code>log(n)</code>, resulting in a space complexity of <code>O(log(n))</code>.</p>
