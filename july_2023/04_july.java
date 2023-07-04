@@ -1,5 +1,5 @@
 class Solution {
-    
+     
     public int countSubArrayProductLessThanK(long a[], int n, long k)
     {
         int out = 0;
