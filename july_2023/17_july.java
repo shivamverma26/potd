@@ -1,4 +1,4 @@
-class Solution {
+ class Solution {
     public String FirstNonRepeating(String stream) {
         Map<Character, Integer> charCount = new HashMap<>();
         Queue<Character> uniqueChars = new ArrayDeque<>();
