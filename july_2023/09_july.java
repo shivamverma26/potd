@@ -1,6 +1,6 @@
 class Solution
 {
-    //Function to find the smallest positive number missing from the array.
+     //Function to find the smallest positive number missing from the array.
     static int missingNumber(int arr[], int size)
     {
        HashMap<Integer,Integer> mp=new HashMap<Integer,Integer>();
